@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_guru/views/widgets/CustomAppBar.dart';
+import 'package:wallpaper_guru/views/widgets/SearchBar.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -14,6 +15,11 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: CustomAppBar(word1: "Wallpaper",word2: "Guru",),
+      ),
+      body: Column(
+        children: [
+          SearchBar(),
+        ],
       ),
     );
   }
