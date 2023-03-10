@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_guru/views/widgets/CustomAppBar.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -7,7 +8,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        title: CustomAppBar(word1: "Wallpaper",word2: "Guru",),
+      ),
     );
   }
 }
