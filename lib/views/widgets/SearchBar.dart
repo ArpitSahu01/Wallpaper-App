@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_guru/views/screens/search.dart';
 
 class SearchBar extends StatelessWidget {
-  const SearchBar({Key? key}) : super(key: key);
+  TextEditingController controller =TextEditingController();
+   SearchBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +27,13 @@ class SearchBar extends StatelessWidget {
               focusedErrorBorder: InputBorder.none,
             ),
             onChanged: (value){
-
+              controller.text = value;
             },
           )),
           InkWell(
-            onTap: (){},
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (ctx)=>SearchScreen(query: controller.text,)));
+            },
             child: const Icon(Icons.search),
           )
         ],
