@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_guru/controllers/apiOpr.dart';
+import 'package:wallpaper_guru/models/photosModel.dart';
 import 'package:wallpaper_guru/views/widgets/CustomAppBar.dart';
 import 'package:wallpaper_guru/views/widgets/SearchBar.dart';
 import 'package:wallpaper_guru/views/widgets/catBlock.dart';
@@ -14,9 +15,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+
+  List<PhotosModel> trendingWallList = [];
   @override
   void initState() {
-    ApiOperations().getTrendyWallpapers();
+    ApiOperations.getTrendyWallpapers().then((value) {
+      trendingWallList = value;
+      setState(() {
+
+      });
+    });
     super.initState();
   }
 
@@ -47,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child: GridView.builder(
-                itemCount: 30,
+                itemCount: trendingWallList.length,
                   physics: const BouncingScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -62,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(14),
-                    child: Image.network("https://images.pexels.com/photos/1114797/pexels-photo-1114797.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",fit: BoxFit.cover,)),
+                    child: Image.network(trendingWallList[index].imgSrc,fit: BoxFit.cover,)),
               )),
             ),
           ),
