@@ -4,6 +4,8 @@ import 'package:wallpaper_guru/models/photosModel.dart';
 import 'package:wallpaper_guru/views/widgets/CustomAppBar.dart';
 import 'package:wallpaper_guru/views/widgets/SearchBar.dart';
 
+import 'fullScreen.dart';
+
 class SearchScreen extends StatefulWidget {
   String query;
    SearchScreen({Key? key,required this.query}) : super(key: key);
@@ -54,16 +56,25 @@ class _SearchScreenState extends State<SearchScreen> {
                     mainAxisExtent: 400,
                     mainAxisSpacing: 12,
                     crossAxisSpacing: 12,
-                  ), itemBuilder: (context,index)=>Container(
+                  ), itemBuilder: (context,index)=>
+                  InkWell(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>FullScreen(imgUrl: searchResults[index].imgSrc)));
+                    },
+                    child: Hero(
+                      tag: searchResults[index].imgSrc,
+                      child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.orangeAccent,
-                    borderRadius: BorderRadius.circular(14)
+                        color: Colors.orangeAccent,
+                        borderRadius: BorderRadius.circular(14)
                 ),
 
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(14),
-                    child: Image.network(searchResults[index].imgSrc,fit: BoxFit.cover,)),
-              )),
+                        borderRadius: BorderRadius.circular(14),
+                        child: Image.network(searchResults[index].imgSrc,fit: BoxFit.cover,)),
+              ),
+                    ),
+                  )),
             ),
           ),
         ],

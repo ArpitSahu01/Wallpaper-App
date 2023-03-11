@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_guru/controllers/apiOpr.dart';
 import 'package:wallpaper_guru/models/photosModel.dart';
+import 'package:wallpaper_guru/views/screens/fullScreen.dart';
 import 'package:wallpaper_guru/views/widgets/CustomAppBar.dart';
 import 'package:wallpaper_guru/views/widgets/SearchBar.dart';
 import 'package:wallpaper_guru/views/widgets/catBlock.dart';
@@ -62,15 +63,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisExtent: 400,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
-              ), itemBuilder: (context,index)=>Container(
-                decoration: BoxDecoration(
-                  color: Colors.orangeAccent,
-                  borderRadius: BorderRadius.circular(14)
-                ),
+              ), itemBuilder: (context,index)=>InkWell(
+                onTap: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>FullScreen(imgUrl: trendingWallList[index].imgSrc)));
+                },
+                child: Hero(
+                  tag: trendingWallList[index].imgSrc,
+                  child: Container(
 
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(14),
-                    child: Image.network(trendingWallList[index].imgSrc,fit: BoxFit.cover,)),
+                    decoration: BoxDecoration(
+                      color: Colors.orangeAccent,
+                      borderRadius: BorderRadius.circular(14)
+                    ),
+
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(14),
+                        child: Image.network(trendingWallList[index].imgSrc,fit: BoxFit.cover,)),
+                  ),
+                ),
               )),
             ),
           ),
