@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_guru/controllers/apiOpr.dart';
 import 'package:wallpaper_guru/views/widgets/CustomAppBar.dart';
 import 'package:wallpaper_guru/views/widgets/SearchBar.dart';
 import 'package:wallpaper_guru/views/widgets/catBlock.dart';
 
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  @override
+  void initState() {
+    ApiOperations().getTrendyWallpapers();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
