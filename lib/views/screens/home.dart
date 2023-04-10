@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        title: CustomAppBar(word1: "Wallpaper",word2: "Guru",),
+        title: CustomAppBar(word1: "Wall",word2: "Guru",),
       ),
       body: Column(
         children: [
@@ -48,8 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 50,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 30,
-              itemBuilder: (context,index)=>CatBlock(),
+              itemCount: 10,
+              itemBuilder: (context,index)=> CatBlock(index: index,),
             ),
           ),
           Expanded(
