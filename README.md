@@ -1,6 +1,6 @@
 # wallpaper_guru
 
-A new Flutter project.
+In today's world where  people check their phone over a hundred times a day. Our phone wallpaper being the first thing we see, it can really influence our mood and it is also a great way to express our unique personality.
 
 ## Getting Started
 
